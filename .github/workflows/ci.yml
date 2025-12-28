@@ -15,7 +15,7 @@ permissions:
   packages: read
 
 env:
-  GHCR_IMAGE: donkie/spoolman
+  GHCR_IMAGE: oleksii-suprun/spoolman
 
 jobs:
   #
@@ -356,7 +356,9 @@ jobs:
             ghcr.io/${{ env.GHCR_IMAGE }}
           tags: |
             type=edge
+            type=edge,suffix=-{{sha}}
             type=semver,pattern={{version}}
+            type=semver,pattern={{version}}-{{sha}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
 
@@ -368,7 +370,9 @@ jobs:
             ${{ vars.REMOTE_REGISTRY_URL }}/${{ vars.REMOTE_REGISTRY_NAMESPACE }}/${{ vars.REMOTE_REGISTRY_REPOSITORY }}
           tags: |
             type=edge
+            type=edge,suffix=-{{sha}}
             type=semver,pattern={{version}}
+            type=semver,pattern={{version}}-{{sha}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
 
