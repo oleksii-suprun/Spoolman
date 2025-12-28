@@ -363,6 +363,7 @@ jobs:
             type=semver,pattern={{version}}-{{sha}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
+            type=semver,pattern=latest
 
       - name: Extract metadata (tags, labels) for Docker Hub
         id: meta-dh
@@ -377,6 +378,7 @@ jobs:
             type=semver,pattern={{version}}-{{sha}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
+            type=semver,pattern=latest
 
       - name: Log in to DockerHub
         uses: docker/login-action@v3.3.0
