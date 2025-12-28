@@ -233,6 +233,8 @@ jobs:
           compose-file: "./tests_integration/docker-compose-${{ matrix.dbtype }}.yml"
           up-flags: "--abort-on-container-exit"
           down-flags: "--volumes"
+        env:
+          SPOOLMAN_IMAGE: ${{ env.GHCR_IMAGE }}
   #
   # Build arm64 image
   # Don't run this for pull requests

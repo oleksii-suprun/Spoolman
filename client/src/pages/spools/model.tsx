@@ -7,7 +7,7 @@ export enum WeightToEnter {
 }
 
 export interface ISpool {
-  id: number;
+  id: string;
   registered: string;
   first_used?: string;
   last_used?: string;

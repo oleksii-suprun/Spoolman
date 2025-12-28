@@ -15,7 +15,7 @@ export function LocationContainer() {
   const setLocationsSetting = useSetSetting<string[]>("locations");
 
   const locationsSpoolOrders = useLocationsSpoolOrders();
-  const setLocationsSpoolOrders = useSetSetting<Record<string, number[]>>("locations_spoolorders");
+  const setLocationsSpoolOrders = useSetSetting<Record<string, string[]>>("locations_spoolorders");
 
   const {
     data: spoolData,
@@ -36,7 +36,7 @@ export function LocationContainer() {
   // Group spools by location
   const spoolLocations = (() => {
     const spools = spoolData?.data ?? [];
-    spools.sort((a, b) => a.id - b.id);
+    spools.sort((a, b) => a.id.localeCompare(b.id));
 
     const grouped: Record<string, ISpool[]> = {};
     spools.forEach((spool) => {
@@ -113,7 +113,7 @@ export function LocationContainer() {
     setLocationsSetting.mutate(newLocs);
   };
 
-  const setLocationSpoolOrder = (location: string, spoolOrder: number[]) => {
+  const setLocationSpoolOrder = (location: string, spoolOrder: string[]) => {
     setLocationsSpoolOrders.mutate({
       ...locationsSpoolOrders,
       [location]: spoolOrder,
@@ -138,7 +138,7 @@ export function LocationContainer() {
         moveLocation={moveLocation}
         onEditTitle={(newTitle: string) => onEditTitle(loc, newTitle)}
         locationSpoolOrder={spoolOrder}
-        setLocationSpoolOrder={(spoolOrder: number[]) => setLocationSpoolOrder(loc, spoolOrder)}
+        setLocationSpoolOrder={(spoolOrder: string[]) => setLocationSpoolOrder(loc, spoolOrder)}
       />
     );
   });

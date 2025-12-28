@@ -19,11 +19,11 @@ export interface ContainerDragItem extends DragItem {
 }
 
 interface CurrentDraggedSpool {
-  draggedSpoolId: number;
-  setDraggedSpoolId: (spoolid: number) => void;
+  draggedSpoolId: string;
+  setDraggedSpoolId: (spoolid: string) => void;
 }
 
 export const useCurrentDraggedSpool = create<CurrentDraggedSpool>((set) => ({
-  draggedSpoolId: -1,
-  setDraggedSpoolId: (spoolid: number) => set({ draggedSpoolId: spoolid }),
+  draggedSpoolId: "",
+  setDraggedSpoolId: (spoolid: string) => set({ draggedSpoolId: spoolid }),
 }));

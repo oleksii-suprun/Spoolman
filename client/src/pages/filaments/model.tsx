@@ -1,7 +1,7 @@
 import { IVendor } from "../vendors/model";
 
 export interface IFilament {
-  id: number;
+  id: string;
   registered: string;
   name?: string;
   vendor?: IVendor;

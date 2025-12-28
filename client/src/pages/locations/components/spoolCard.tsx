@@ -26,7 +26,7 @@ export function SpoolCard({
 }: {
   index: number;
   spool: ISpool;
-  moveSpoolOrder: (dragIndex: number, hoverIndex: number) => void;
+  moveSpoolOrder: (dragIndex: string, hoverIndex: number) => void;
 }) {
   const { token } = useToken();
   const t = useTranslate();
@@ -41,7 +41,7 @@ export function SpoolCard({
     successNotification: false,
   });
 
-  const moveSpoolLocation = (spool_id: number, location: string) => {
+  const moveSpoolLocation = (spool_id: string, location: string) => {
     updateSpool({
       id: spool_id,
       values: {
@@ -110,7 +110,7 @@ export function SpoolCard({
       isDragging: monitor.isDragging(),
     }),
     end() {
-      setDraggedSpoolId(-1);
+      setDraggedSpoolId("");
     },
   });
 

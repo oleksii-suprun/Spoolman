@@ -93,14 +93,14 @@ export function useLocations(): string[] | null {
   }, [query.data]);
 }
 
-export function useLocationsSpoolOrders(): Record<string, number[]> {
+export function useLocationsSpoolOrders(): Record<string, string[]> {
   const query = useGetSetting("locations_spoolorders");
 
   return useMemo(() => {
     if (!query.data) return {};
 
     try {
-      return (JSON.parse(query.data.value) ?? {}) as Record<string, number[]>;
+      return (JSON.parse(query.data.value) ?? {}) as Record<string, string[]>;
     } catch {
       console.warn("Failed to parse locations spool orders", query.data.value);
       return {};

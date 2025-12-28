@@ -28,7 +28,7 @@ const FilterDropdownLoading = () => {
 };
 
 interface Entity {
-  id: number;
+  id: string;
 }
 
 export interface Action {

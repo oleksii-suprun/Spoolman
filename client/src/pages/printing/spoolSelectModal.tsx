@@ -17,7 +17,7 @@ interface Props {
 
 interface ISpoolCollapsed extends ISpool {
   "filament.combined_name": string;
-  "filament.id": number;
+  "filament.id": string;
   "filament.material"?: string;
 }
 
@@ -37,7 +37,7 @@ function collapseSpool(element: ISpool): ISpoolCollapsed {
 }
 
 const SpoolSelectModal: React.FC<Props> = ({ description, onContinue }) => {
-  const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [showArchived, setShowArchived] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
@@ -93,7 +93,7 @@ const SpoolSelectModal: React.FC<Props> = ({ description, onContinue }) => {
   };
 
   // Handler for selecting/unselecting individual items
-  const handleSelectItem = (item: number) => {
+  const handleSelectItem = (item: string) => {
     setSelectedItems((prevSelected) =>
       prevSelected.includes(item) ? prevSelected.filter((selected) => selected !== item) : [...prevSelected, item]
     );

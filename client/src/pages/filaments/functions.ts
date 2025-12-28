@@ -20,7 +20,7 @@ export async function createFilamentFromExternal(externalFilament: ExternalFilam
     multi_color_direction = externalFilament.multi_color_direction
   }
 
-  const body: Omit<IFilament, "id" | "registered" | "extra"> & { vendor_id: number } = {
+  const body: Omit<IFilament, "id" | "registered" | "extra"> & { vendor_id: string } = {
     name: externalFilament.name,
     material: externalFilament.material,
     vendor_id: vendor.id,

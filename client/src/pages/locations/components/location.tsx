@@ -30,8 +30,8 @@ export function Location({
   onDelete?: () => void;
   moveLocation: (dragIndex: number, hoverIndex: number) => void;
   onEditTitle: (newTitle: string) => void;
-  locationSpoolOrder: number[];
-  setLocationSpoolOrder: (spoolOrder: number[]) => void;
+  locationSpoolOrder: string[];
+  setLocationSpoolOrder: (spoolOrder: string[]) => void;
 }) {
   const { token } = useToken();
   const t = useTranslate();
@@ -43,7 +43,7 @@ export function Location({
     successNotification: false,
   });
 
-  const moveSpoolLocation = (spool_id: number, location: string) => {
+  const moveSpoolLocation = (spool_id: string, location: string) => {
     updateSpool({
       id: spool_id,
       values: {

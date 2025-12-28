@@ -18,7 +18,13 @@ def datetime_to_str(dt: datetime) -> str:
     return dt.isoformat().replace("+00:00", "Z")
 
 
+def id_to_str(id_val: int) -> str:
+    """Serialize ID as string to prevent JavaScript precision loss."""
+    return str(id_val)
+
+
 SpoolmanDateTime = Annotated[datetime, PlainSerializer(datetime_to_str)]
+SpoolmanId = Annotated[int, PlainSerializer(id_to_str)]
 
 
 class Message(BaseModel):
@@ -49,7 +55,7 @@ class SettingKV(BaseModel):
 
 
 class Vendor(BaseModel):
-    id: int = Field(description="Unique internal ID of this vendor.")
+    id: SpoolmanId = Field(description="Unique internal ID of this vendor.")
     registered: SpoolmanDateTime = Field(description="When the vendor was registered in the database. UTC Timezone.")
     name: str = Field(max_length=64, description="Vendor name.", examples=["Polymaker"])
     comment: Optional[str] = Field(
@@ -101,7 +107,7 @@ class MultiColorDirection(Enum):
 
 
 class Filament(BaseModel):
-    id: int = Field(description="Unique internal ID of this filament type.")
+    id: SpoolmanId = Field(description="Unique internal ID of this filament type.")
     registered: SpoolmanDateTime = Field(description="When the filament was registered in the database. UTC Timezone.")
     name: Optional[str] = Field(
         None,
@@ -227,7 +233,7 @@ class Filament(BaseModel):
 
 
 class Spool(BaseModel):
-    id: int = Field(description="Unique internal ID of this spool of filament.")
+    id: SpoolmanId = Field(description="Unique internal ID of this spool of filament.")
     registered: SpoolmanDateTime = Field(description="When the spool was registered in the database. UTC Timezone.")
     first_used: Optional[SpoolmanDateTime] = Field(
         None,

@@ -8,7 +8,7 @@ interface Event {
   resource: "filament" | "spool" | "vendor";
   date: string;
   payload: {
-    id: number;
+    id: string;
     [key: string]: unknown;
   };
 }

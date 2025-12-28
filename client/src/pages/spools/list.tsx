@@ -46,7 +46,7 @@ const { confirm } = Modal;
 
 interface ISpoolCollapsed extends ISpool {
   "filament.combined_name": string; // Eg. "Prusa - PLA Red"
-  "filament.id": number;
+  "filament.id": string;
   "filament.material"?: string;
 }
 

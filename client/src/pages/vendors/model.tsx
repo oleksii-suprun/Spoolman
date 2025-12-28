@@ -1,5 +1,5 @@
 export interface IVendor {
-  id: number;
+  id: string;
   registered: string;
   name: string;
   comment?: string;

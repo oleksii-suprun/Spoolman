@@ -10,8 +10,8 @@ export function SpoolList({
   setSpoolOrder,
 }: {
   spools: ISpool[];
-  spoolOrder: number[];
-  setSpoolOrder: (spoolOrder: number[]) => void;
+  spoolOrder: string[];
+  setSpoolOrder: (spoolOrder: string[]) => void;
 }) {
   const { token } = useToken();
 
@@ -21,7 +21,7 @@ export function SpoolList({
     if (!finalSpoolOrder.includes(spool.id)) finalSpoolOrder.push(spool.id);
   });
 
-  const moveSpoolOrder = (spool_id: number, hoverIndex: number) => {
+  const moveSpoolOrder = (spool_id: string, hoverIndex: number) => {
     // Move spool spool_id to position hoverIndex
     let curIdx = finalSpoolOrder.indexOf(spool_id);
     if (curIdx === -1) {

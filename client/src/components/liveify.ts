@@ -10,7 +10,7 @@ const liveProviderInstance = liveProvider(getAPIURL());
  * @param dataSource Original dataSource
  * @returns dataSource that is updated with live data
  */
-export function useLiveify<Data extends { id: number }>(
+export function useLiveify<Data extends { id: string }>(
   resource: string,
   dataSource: Data[],
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

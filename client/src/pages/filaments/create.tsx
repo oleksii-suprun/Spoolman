@@ -23,7 +23,7 @@ interface CreateOrCloneProps {
 }
 
 type IFilamentRequest = Omit<IFilamentParsedExtras, "id" | "registered"> & {
-  vendor_id: number;
+  vendor_id: string;
 };
 
 export const FilamentCreate: React.FC<IResourceComponentsProps & CreateOrCloneProps> = (props) => {

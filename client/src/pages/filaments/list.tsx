@@ -148,7 +148,7 @@ export const FilamentList: React.FC<IResourceComponentsProps> = () => {
   }
 
   const { editUrl, showUrl, cloneUrl } = useNavigation();
-  const filamentAddSpoolUrl = (id: number): string => `/spool/create?filament_id=${id}`;
+  const filamentAddSpoolUrl = (id: string): string => `/spool/create?filament_id=${id}`;
   const actions = (record: IFilamentCollapsed) => [
     { name: t("buttons.show"), icon: <EyeOutlined />, link: showUrl("filament", record.id) },
     { name: t("buttons.edit"), icon: <EditOutlined />, link: editUrl("filament", record.id) },
